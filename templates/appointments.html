@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/css/load.css">
+    <link rel="stylesheet" href="../static/css/appo.css">
+
+    <script src="../static/js/app.js" defer></script>
+    <title>E-Med</title>
+</head>
+
+<body class="flex center">
+    <div class="loading flex center">
+        <div class="mid max">
+            <p class="ltxt">MedCare</p>
+        </div>
+    </div>
+
+    <div class="ratio">
+        <div class="topbar flex center">
+            <div class="search flex center">
+                <p class="title">MedCare</p>
+                <input type="text" class="inp" placeholder="Search">
+            </div>
+            <div class="links flex center">
+                <a href="#" class="sub">profile</a>
+            </div>
+        </div>
+        <div class="navbar flex center">
+            <a href="dashboard" class="link">Dashboard</a>
+            <a href="support" class="link">Appointments</a>
+            <a href="diseases" class="link">E-diagnose</a>
+            <a href="/templates/history.html" class="link">E-Diagnosis Results</a>
+        </div>
+        <div class="cont">
+            
+            <!-- table if any appointments -->
+            <p class="dtit">Your Appointments / History</p> 
+            <table class="table">
+                <tr class="row">
+                    <th class="head">S/no</th>
+                    <th class="head n">Name</th>
+                    <th class="head">Age</th>
+                    <th class="head">Gender</th>
+                    <th class="head">Hospital</th>
+                    <th class="head">Doctor</th>
+                    <th class="head">Booking Status</th>
+                </tr>
+                <tr class="row">
+                    <td class="bdy">1</td>
+                    <td class="bdy">Hello</td>
+                    <td class="bdy">20</td>
+                    <td class="bdy">Male</td>
+                    <td class="bdy">E Med Hospital</td>
+                    <td class="bdy">Emo Evado</td>
+                    <td class="bdy">Booked</td>
+                </tr>
+            </table>
+
+            <!-- if no appointments  -->
+            <!-- <p class="dtit">You have no Appointments</p> -->
+            
+
+            <button class="float">Book Appointment</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

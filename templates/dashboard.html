@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../static/css/load.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script src="../static/js/app.js" defer></script>
+    <script src="../static/js/graphs.js" defer></script>
+    <script src="../static/js/date.js" defer></script>
+    <style>.link {
+        color: black; 
+      }
+      </style>
+    <title>VitaDex | Dashboard</title>
+</head>
+<body class="flex center">
+    <div class="loading flex center">
+        <div class="mid max">
+            <p class="ltxt">VitaDex</p>
+        </div>
+    </div>
+
+    <div class="ratio">
+        <div class="topbar flex center">
+            <div class="search flex center">
+                <p class="title">VitaDex</p>
+                <input type="text" class="inp" placeholder="Search">
+            </div>
+            <div class="links flex center">
+                <a href="/" class="sub">Home</a>
+            </div>
+        </div>
+        <div class="navbar flex center">
+            <div class="link">
+            <a href="diseases" class="link">E-diagnose</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="dashboard" class="link">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="support" class="link">Support</a>
+        </div>
+        </div>
+        <div class="cont flex">
+            <div style="width: 65%">
+                <p class="dtit">Hi, Checkout your health conditions</p>
+                <div class="flex" style="gap:20px;
+                            margin-bottom: 40px;">
+                    {% for health in health_data %}
+                    <div class="box">
+                        <p class="bt">Heart Beat</p>
+                        <p class="bs">{{ health.thalach }} bpm</p>
+                        <p class="bs sm">As per last checkup</p>
+                    </div>
+                    <div class="box warn">
+                        <p class="bt">Blood Glucose Level</p>
+                        <p class="bs">{{ health.chol }} mg/dL</p>
+                        <p class="bs sm">As per last checkup</p>
+                    </div>
+                    <div class="box warn">
+                        <p class="bt">Blood Pressure</p>
+                        <p class="bs">{{ health.trestbps }} mmHg</p>
+                        <p class="bs sm">As per last checkup</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="flex">
+                    <div class="graph">
+                        <p class="dtit" style="font-size:16px;">Weekly Diabetes Checkup</p>
+                        <div class="gh">
+                            <div class="vcont">
+                                <div class="l-labels"></div>
+                                <div class="container" id="cont">
+                                    <div class="h-cont" id="h-cont">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-labels">
+                                <div class="incont">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile">
+                <p class="dtit">Your Bio-Data</p>
+                <div class="bbox">
+                    <div class="data flex">
+                        <p class="label">Name : &nbsp</p>
+                        <p class="dl"> {{ user.name }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Age : &nbsp</p>
+                        <p class="dl"> {{ user.age }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Email : &nbsp</p>
+                        <p class="dl"> {{ user.email }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Blood Group : &nbsp</p>
+                        <p class="dl"> {{ user.blood_group }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Phone : &nbsp</p>
+                        <p class="dl"> {{ user.phone }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Gender : &nbsp</p>
+                        <p class="dl"> {{ user.gender }}</p>
+                    </div>
+                    <div class="data flex">
+                        <p class="label">Date of Birth : &nbsp</p>
+                        <p class="dl"> {{ user.date_of_birth }}</p>
+                    </div>
+                </div>
+                <div class="bbox">
+                    <p class="bdl"> Note : These details are provided by you. Based on this data the predictions may vary, so be accurate while providing info.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

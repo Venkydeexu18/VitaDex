@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  line-height: normal;
+  overflow: hidden;
+}
+
+:root {
+  --font-poppins: Poppins;
+  --font-size-26xl: 45px;
+  --font-size-19xl: 38px;
+  --color-gray-100: #262323;
+  --color-white: #fff;
+  --gap-10xs: 3px;
+  --padding-3xs: 10px;
+}

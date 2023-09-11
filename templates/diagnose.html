@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="../static/css/load.css">
+    <link rel="stylesheet" href="../static/css/diag.css">
+
+    <script src="../static/js/app.js" defer></script>
+    <title>VitaDex | Diagnosis</title>
+    <style>.link {
+        color: black; 
+      }
+      </style>
+</head>
+
+<body class="flex center">
+    <div class="loading flex center">
+        <div class="mid max">
+            <p class="ltxt">VitaDex</p>
+        </div>
+    </div>
+
+    <div class="ratio">
+        <div class="topbar flex center">
+            <div class="search flex center">
+                <p class="title">VitaDex</p>
+                <input type="text" class="inp" id="searchInput" placeholder="Search">
+            </div>
+            <div class="links flex center">
+                <a href="/" class="sub">Home</a>
+            </div>
+        </div>
+        <div class="navbar flex center">
+            <div class="link">
+            <a href="diseases" class="link">E-diagnose</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="dashboard" class="link">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="support" class="link">Support</a>
+        </div>
+        </div>
+        <div class="cont">
+            <div class="note flex center">
+                <p class="dtit" style="margin-bottom:5px; font-size: 35px;">Start Your Diagnosis</p>
+                <p class="sub">This E-Diagnosis contains some multiple questions, based on the answers results may varry. Be accurate
+                    while answering questions.</p>
+                <button class="sbtn">Start Diagnosis</button>
+            </div>
+            <div class="popCont hide">
+                <div class="header">
+                    <ion-icon name="arrow-back-outline" class="ico" onclick="goBack()"></ion-icon> 
+                    <span onclick="goBack()" >Go Back</span>
+                </div>
+                <div class="popup">
+                    <div class="cards flex">
+                        <div class="card flex">
+                            <ion-icon name="heart-outline" class="cico"></ion-icon>
+                            <p class="ctitle">Heart Disease Prediction</p>
+
+                            <p class="csub">
+                                Predict the likelihood of heart disease based on various factors.
+                            </p>
+                            <form action="/heart_disease">
+                            <button class="sbtn dbtn">Start Diagnosis</button></form>
+                        </div>
+                        <div class="card flex">
+                            <ion-icon name="medical-outline" class="cico"></ion-icon>
+                            <p class="ctitle">Covid-19 Prediction</p>
+                            <p class="csub">
+                                Predict the likelihood of having COVID-19 based on symptoms and risk factors.
+                            </p>
+                            <form action="/covid">
+                            <button class="sbtn dbtn">Start Diagnosis</button></form>
+                        </div>
+                        <div class="card flex">
+                            <ion-icon name="water-outline" class="cico"></ion-icon>
+                            <p class="ctitle">Diabetes Prediction</p>
+                            <p class="csub">
+                                Predict the likelihood of having diabetes based on various factors.
+                            </p>
+                            <form action="/diabetes">
+                            <button class="sbtn dbtn">Start Diagnosis</button></form>
+                        </div>
+                        <div class="card flex">
+                            <ion-icon name="help-outline" class="cico"></ion-icon>
+                            <p class="ctitle">Know Your Disease</p>
+                            <p class="csub">
+                                Get information about different diseases and their symptoms.
+                            </p>
+                            <button class="sbtn dbtn">Start Diagnosis</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

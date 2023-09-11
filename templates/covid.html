@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/load.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/auto.css">
+    <link rel="stylesheet" href="../static/css/diag.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>.link {
+        color: black; 
+      }
+      body {
+  overflow: hidden;
+}
+      </style>
+    <title>VitaDex | Diagnosis</title>
+</head>
+
+<body class="flex center">
+
+    <div class="ratio">
+        <div class="topbar flex center">
+            <div class="search flex center">
+                <p class="title">VitaDex</p>
+                <input type="text" class="inp" placeholder="Search">
+            </div>
+            <div class="links flex center">
+                <a href="/" class="sub">Home</a>
+            </div>
+        </div>
+        <div class="navbar flex center">
+            <div class="link">
+            <a href="diseases" class="link">E-diagnose</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="dashboard" class="link">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="support" class="link">Support</a>
+        </div>
+        </div>
+        <div class="popCont">
+            <div class="header">
+                <ion-icon name="arrow-back-outline" class="ico" onclick="goBack()"></ion-icon>
+                <span onclick="goBack()">Go Back</span>
+            </div>
+            <div class="formWrapper">
+                <form method="POST" class="bg">
+                    <label for="{{ question.field_name }}" class="que">{{ question.question }}</label><br>
+                    {% if question.input_type == 'select' %}
+                    <div class="inpCont">
+                        <select name="{{ question.field_name }}" class="query" required>
+                            {% for option in question.options %}
+                            <option value="{{ option.value }}">{{ option.label }}</option>
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        <input type="{{ question.input_type }}" name="{{ question.field_name }}" class="query" required>
+                    {% endif %}
+                    <input type="hidden" name="current_question" value="{{ current_question }}" required>
+                    <button type="submit" class="submit">
+                        <i class="ion-android-send"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <script src="../static/js/inp.js"></script>
+        <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" type="module"></script>
+        <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" nomodule></script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+            
+        </script>
+    </div>
+</body>
+
+</html>

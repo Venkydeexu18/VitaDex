@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/stylesett.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/auto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/site.webmanifest">
+   <title>VitaDex | Settings</title>
+</head>
+<body>
+    <div onclick="handleButtonClick()" style="position: absolute; top: 25px; left: 45px; font-weight: bold; font-weight: 600; color: rgb(3, 3, 3);">
+        <div class="go-back">
+          <i class="fas fa-arrow-left arrow"></i>
+          <span>Go Back</span>
+        </div>
+    </div>
+    <div class="container">
+        <header>Edit Profile</header>
+        <form action="{{ url_for('edit_profile') }}" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" id="name" name="name" value="{{ user.name }}" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" placeholder="Enter birth date" id="date_of_birth" name="date_of_birth" value="{{ user.date_of_birth }}" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Enter your email" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" placeholder="Enter mobile number" id="phone" name="phone" required>
+                            <small class="error-msg" style="color: red; display: none;">Phone number must be 10 digits.</small>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="" disabled selected hidden>Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Blood Group</label>
+                            <select id="blood_group" name="blood_group" required>
+                                <option value="" disabled selected hidden>Select blood group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        
+
+                <div class="details ID">
+                    <span class="title">Identity Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input type="text" placeholder="Enter your age" id="age" name="age" {% if user.age %}value="{{ user.age }}"{% endif %} required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nationality</label>
+                            <input type="text" placeholder="Enter nationality">
+                        </div>
+
+                        <div class="input-field">
+                            <label>State</label>
+                            <input type="text" placeholder="Enter your state">
+                        </div>
+
+                        <div class="input-field">
+                            <label>District</label>
+                            <input type="text" placeholder="Enter your district">
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <input type="number" placeholder="Enter your city">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Landmark</label>
+                            <input type="number" placeholder="Enter your landmark">
+                        </div>
+                    </div>
+
+                    <button class="submit" id="submit-btn" disabled>
+                        <span class="btnText">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script src="../static/js/scriptsett.js"></script>
+    <script>
+        const phoneNumberInput = document.getElementById('phone');
+        const errorMsg = document.querySelector('.error-msg');
+        const submitBtn = document.getElementById('submit-btn');
+
+        phoneNumberInput.addEventListener('input', function() {
+            const phoneNumber = this.value;
+            if (phoneNumber.length !== 10) {
+                errorMsg.style.display = 'block';
+                submitBtn.disabled = true;
+            } else {
+                errorMsg.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var dateOfBirthInput = document.getElementById('date_of_birth');
+            var today = new Date().toISOString().split('T')[0];
+            dateOfBirthInput.setAttribute('max', today);
+        });
+    </script>
+    
+</body>
+</html>

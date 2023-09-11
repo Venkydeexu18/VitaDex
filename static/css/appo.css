@@ -1,0 +1,25 @@
+.table{
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.row{
+    height: 40px;
+    font-family: "Inter";
+    font-size: 12px;
+    color: #fff;
+}
+
+.head{
+    background-color: #152b31;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.722);
+}
+.n{
+    width: 300px;
+}
+
+.bdy{
+    background-color: #3c5664;
+    text-align: center;
+}

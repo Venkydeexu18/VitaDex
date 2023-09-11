@@ -1,0 +1,171 @@
+:root{
+    --main-col: #fff;
+    --sec-col: #000;
+    --th-col: #f1f1f1;
+  }
+.sub{
+    font-family: "Inter";
+    font-size: 12px;
+    color: var(--sec-col);
+    width: 40%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sbtn{
+    width: max-content;
+    height: max-content;
+    padding: 10px 13px;
+    font-family: "Inter";
+    font-size: 12px;
+    color: var(--main-col);
+    cursor: pointer;
+    background-color: var(--sec-col);
+    border: none;
+    border-radius: 4px;
+}
+
+.note{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.popCont{
+    width: 100%;
+    height: 100%;
+}
+
+.popCont .header{
+    width: 100%;
+    height: 50px;
+    font-family: "Inter";
+    font-size: 14px;
+    color: var(--sec-col);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.ico{
+    margin-right: 10px;
+}
+
+.popCont .popup{
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg{
+    width: 50%;
+    height: max-content;
+    background-color: var(--sec-col);
+    margin-bottom: 150px;
+    padding: 25px 30px;
+    border-radius: 10px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg .que{
+    font-family: "Inter";
+    color: var(--main-col);
+    font-size: 17px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.bg .inpCont{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    margin-top: 10px;
+}
+
+.bg .query{
+    width: calc(100% - 52px);
+    height: 45px;
+    border: none;
+    outline: none;
+    font-family: "Inter";
+    font-size: 12px;
+    padding: 0 20px;
+    border-radius: 5px 0 0 5px;
+}
+
+.submit{
+    width: 45px;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    background-color: var(--main-col);
+    color: var(--sec-col);
+    font-size: 20px;
+    padding-bottom: 4px;
+}
+
+.cards{
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    gap: 30px;
+    justify-content:center;
+}
+
+.cards .card{
+    width: calc((100%/4) - 20px);
+    height: 60%;
+    border-radius: 10px;
+    color: var(--sec-col);
+    font-family: "Inter";
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.cards .card:hover {
+    background-color: var(--sec-col);
+    color: var(--main-col);
+  }
+  
+  .cards .card:hover .csub {
+    color: #f6e9e9;
+  }
+
+  .cards .card:hover .sbtn {
+    background-color: var(--main-col);
+    color: var(--sec-col);
+  }
+
+.card .cico{
+    font-size: 30px;
+}
+
+.card .ctitle{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.card .csub{
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom:35px;
+    color: var(--sec-col);
+}
+
+
+.formWrapper{
+    width: 100%;
+    height: calc(100vh - 135px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-col);
+}

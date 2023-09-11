@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitaDex | Home</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+  <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="../static/css/styles.css" />
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @media (max-width: 768px) {
+      .flex-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .image {
+        margin-bottom: 2rem;
+      }
+    }
+
+    .bx-search {
+      font-weight: bold;
+      font-size: 1.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-header img {
+      display: none;
+    }
+
+    .sidebar.expand .nav-header img {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+    }
+    .header-icon {
+      filter: invert(0%); 
+    }
+    .header-icon {
+      filter: invert(0%); 
+    }
+
+</style>
+</head>
+
+<body>
+  <form action="/"></form>
+  <section class="sidebar">
+    <div class="nav-header">
+      <img src="../static/favicon.ico"></img>
+      <p class="logo">&nbsp&nbspVitaDex</p>
+      <i class="bx bx-menu-alt-right btn-menu"></i>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <i class="bx bx-search search-btn" onclick="toggleSearch()"></i>
+        <input type="text" placeholder="Search..." class="search-input" />
+        <span class="tooltip">Search</span>
+      </li>
+      <li>
+        <a href="/">
+          <i class='bx bxs-home-heart'></i>
+          <span class="title">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="/diseases">
+          <i class='bx bxs-virus bx-flip-horizontal'></i>
+          <span class="title">Diseases</span>
+        </a>
+        <span class="tooltip">Diseases</span>
+      </li>
+      <li>
+        <a href="dashboard">
+          <i class='bx bxs-dashboard'></i>
+          <span class="title">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="support">
+          <i class='bx bx-plus-medical'></i>
+          <span class="title">Support</span>
+        </a>
+        <span class="tooltip">Support</span>
+      </li>
+      <li>
+        <a href="settings">
+          <i class='bx bxs-cog'></i>
+          <span class="title">Settings</span>
+        </a>
+        <span class="tooltip">Settings</span>
+      </li>
+    </ul>
+    <div class="theme-wrapper">
+      <i class="bx bxs-moon theme-icon" id="ico"></i>
+      <p id="theme-text">Dark Theme</p>
+
+      <div class="theme-btn" id="ball-cont">
+        <span class="theme-ball" id="ball"></span>
+      </div>
+    </div>
+  </section>
+  <section class="home">
+    <p style="text-align: right;" id="greeting"></p>
+    <div onclick="handleButtonClick()"
+      style="position: absolute; top: 25px; right: 20px; font-weight: bold; color: var(--sec-col); font-weight: 600; cursor: pointer;"
+      id="registerBtn">Register</div>
+
+    <div class="flex-container">
+      <div class="image">
+        <img src="../static/heart.svg" id="heart">
+      </div>
+      <div class="container">
+        <p>ARE YOU AT A <br> RISK OF<br> A <span class="typed-text"></span>
+          <span class="cursor">&nbsp;</span><br><span class="tagline">"Cover those kilometers because the heart
+            matters."</span></p>
+        <div class="btn-container">
+          <a href="{{ url_for('diabetes') }}">
+            <button>LET'S TAKE THE TEST!</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const greetingElement = document.getElementById('greeting');
+
+    function getGreeting() {
+      const currentHour = new Date().getHours();
+      let greeting;
+      if (currentHour < 12) {
+        greeting = 'Good Morning';
+      } else if (currentHour < 18) {
+        greeting = 'Good Afternoon';
+      } else {
+        greeting = 'Good Evening';
+      }
+
+      return greeting;
+    }
+
+    function handleButtonClick() {
+      const isLoggedIn = "{{name}}" !== "";
+
+      if (isLoggedIn) {
+        window.location.href = "/logout";
+      } else {
+        window.location.href = "/registration";
+      }
+    }
+    const name = "{{name}}";
+    const registerBtn = document.getElementById("registerBtn");
+    if (name !== "") {
+      registerBtn.textContent = "Logout";
+    } else {
+      registerBtn.textContent = name !== "" ? name : "Register";
+    }
+
+    greetingElement.textContent = `Hello! ${name}, ${getGreeting()}`;
+
+    const ball = document.getElementById("ball");
+    let r = document.querySelector(":root");
+    let rcs = getComputedStyle(r);
+    console.log(rcs);
+    const ballCont = document.getElementById("ball-cont");
+    window.localStorage.setItem("theme", "dark");
+
+    ballCont.addEventListener("click", () => {
+      ball.classList.toggle("move");
+      const state = window.localStorage.getItem("theme");
+
+      if (state === "null" || state === "dark") {
+        r.style.setProperty("--main-col", "#000");
+        r.style.setProperty("--sec-col", "#fff");
+        r.style.setProperty("--th-col", "#1a1a1a");
+        window.localStorage.setItem("theme", "light");
+        document.getElementById("ico").classList.remove("bxs-moon");
+        document.getElementById("ico").classList.add("bxs-sun");
+        document.getElementById("heart").style.filter = "invert(100%)";
+      } else {
+        r.style.setProperty("--main-col", "#fff");
+        r.style.setProperty("--sec-col", "#000");
+        r.style.setProperty("--th-col", "#e2e2e2");
+        window.localStorage.setItem("theme", "dark");
+        document.getElementById("ico").classList.remove("bxs-sun");
+        document.getElementById("ico").classList.add("bxs-moon");
+        document.getElementById("heart").style.filter = "invert(0%)";
+      }
+    });
+
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    const textArray = ["Heart Disease?", "Diabetes?", "COVID-19?"];
+    const typingDelay = 200;
+    const erasingDelay = 100;
+    const newTextDelay = 2000;
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        setTimeout(erase, newTextDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+        setTimeout(type, typingDelay + 1100);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+
+    const btn_menu = document.querySelector(".btn-menu");
+    const side_bar = document.querySelector(".sidebar");
+
+    btn_menu.addEventListener("click", function () {
+      side_bar.classList.toggle("expand");
+      changebtn();
+    });
+
+    function changebtn() {
+      if (side_bar.classList.contains("expand")) {
+        btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+
+    const searchBtn = document.querySelector(".search-btn");
+    const searchInput = document.querySelector(".search-input");
+    const navLinks = document.querySelectorAll(".nav-links li a");
+
+    searchBtn.addEventListener("click", () => {
+      searchInput.classList.toggle("active");
+
+      if (searchInput.classList.contains("active")) {
+        searchInput.focus();
+      } else {
+        searchInput.value = "";
+        filterNavLinks("");
+      }
+    });
+
+    searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      filterNavLinks(searchTerm);
+    });
+
+    function filterNavLinks(searchTerm) {
+      navLinks.forEach((link) => {
+        const title = link.querySelector(".title").textContent.toLowerCase();
+        const tooltip = link.nextElementSibling.textContent.toLowerCase();
+
+        if (title.includes(searchTerm) || tooltip.includes(searchTerm)) {
+          link.parentElement.style.display = "block";
+        } else {
+          link.parentElement.style.display = "none";
+        }
+      });
+    }
+const sidebar = document.querySelector('.sidebar');
+
+searchBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('expand');
+  searchBtn.classList.toggle('active');
+});
+
+  btn_menu.addEventListener("click", function () {
+    side_bar.classList.toggle("expand");
+    changebtn();
+  });
+
+  function changebtn() {
+    if (side_bar.classList.contains("expand")) {
+      btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else {
+      btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  }
+
+  const hamburgerMenu = document.querySelector('.btn-menu');
+
+  hamburgerMenu.addEventListener('click', function () {
+    side_bar.classList.toggle('expand');
+    toggleActiveClass();
+  });
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      side_bar.classList.remove('expand');
+      toggleActiveClass();
+    });
+  });
+
+  function toggleActiveClass() {
+    hamburgerMenu.classList.toggle('active');
+  }
+  const homeSection = document.querySelector('.home');
+
+  homeSection.addEventListener('click', () => {
+    if (sidebar.classList.contains('expand')) {
+      sidebar.classList.remove('expand');
+      toggleActiveClass();
+    }
+  });
+  const themeTextElement = document.getElementById("theme-text");
+
+ballCont.addEventListener("click", () => {
+  ball.classList.toggle("move");
+  const state = window.localStorage.getItem("theme");
+
+  if (state === "null" || state === "dark") {
+    themeTextElement.textContent = "Dark Theme";
+  } else {
+    themeTextElement.textContent = "Light Theme";
+  }
+});
+ballCont.addEventListener("click", () => {
+  ball.classList.toggle("move");
+});
+  </script>
+</body>
+</html>

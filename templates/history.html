@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/css/load.css">
+    <link rel="stylesheet" href="../static/css/hist.css">
+
+    <script src="../statics/js/app.js" defer></script>
+    <title>E-Med</title>
+</head>
+
+<body class="flex center">
+    <div class="loading flex center">
+        <div class="mid max">
+            <p class="ltxt">MedCare</p>
+        </div>
+    </div>
+
+    <div class="ratio">
+        <div class="topbar flex center">
+            <div class="search flex center">
+                <p class="title">MedCare</p>
+                <input type="text" class="inp" placeholder="Search">
+            </div>
+            <div class="links flex center">
+                <a href="#" class="sub">profile</a>
+            </div>
+        </div>
+        <div class="navbar flex center">
+            <a href="/templates/dashboard.html" class="link">Dashboard</a>
+            <a href="/templates/appointments.html" class="link">Appointments</a>
+            <a href="/templates/diagnose.html" class="link">E-diagnose</a>
+            <a href="/templates/history.html" class="link">E-Diagnosis Results</a>
+        </div>
+        <div class="cont">
+            <p class="dtit">Your Diagnosis Results</p>
+            <div class="rcards flex">
+                <div class="rcard">
+                    <p class="rate">75%</p>
+                    <p class="mini">Heart Disease Prediction Results</p>
+                    <p class="side">You have a high chance of getting heart disease.</p>
+                    <p class="time">Your Last Diagnosis : 1-2-23</p>
+                </div>
+                <div class="rcard">
+                    <p class="rate">85%</p>
+                    <p class="mini">Diabetes Prediction Results</p>
+                    <p class="side">You have a high chance of getting Diabetes.</p>
+                    <p class="time">Your Last Diagnosis : 1-2-23</p>
+                </div>
+                <div class="rcard">
+                    <p class="rate">Negative</p>
+                    <p class="mini">Covid-19 Prediction Results</p>
+                    <p class="side">You are safe with covid-19.</p>
+                    <p class="time">Your Last Diagnosis : 1-2-23</p>
+                </div>
+                <div class="rcard">
+                    <p class="rate">75%</p>
+                    <p class="mini">Know your disease</p>
+                    <p class="side">According to your answers you have Aids.</p>
+                    <p class="time">Your Last Diagnosis : 1-2-23</p>
+                </div>
+            </div>
+            <a href="/templates/diagnose.html" class="float">Re-Diagnose </a>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

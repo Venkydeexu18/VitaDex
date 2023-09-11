@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/auto.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/android-chrome-192x192.png">
+  <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+  .password-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .password-input-container input[type="password"] {
+    width: 282px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .password-input-container .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .password-input-container .eye-icon i {
+    font-size: 16px;
+  }
+  </style>  
+  <title>VitaDex | Login</title>
+</head>
+
+<body>
+  <div class="body-container">
+    {% if error %}
+    <p class="msg">{{ error }}</p>
+    {% endif %}
+    <div onclick="handleButtonClick()" style="position: absolute; top: 25px; left: 45px; font-weight: bolder; font-weight: 600; color: rgb(3, 3, 3);">
+      <div class="go-back">
+        <i class="fas fa-arrow-left arrow"></i>
+        <span>Go Back</span>
+      </div>
+    </div>
+    <div class="container" id="container">
+      <div>
+        <div class="form-container sign-up-container">
+          <form method="POST" action="{{ url_for('registration') }}">
+            <h1>Create Account</h1>
+            <input type="name" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <div class="password-input-container">
+              <input type="password" name="password" id="signup-password" placeholder="Password" required />
+              <span class="eye-icon" onclick="togglePasswordVisibility('signup-password')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+            <p id="password-validation" class="password-validation"></p>
+            <button type="submit" class="btn-grad">Sign Up</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form action="{{ url_for('login') }}" method="POST">
+            <h1>Sign In</h1>
+            <input type="email" name="email" placeholder="Email" required />
+            <div class="password-input-container">
+              <input type="password" name="password" id="signin-password" placeholder="Password" required />
+              <span class="eye-icon" onclick="togglePasswordVisibility('signin-password')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+            <a href="/forgot">Forgot your password?</a>
+            <button type="submit" class="btn-grad">Sign In</button>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                Start from where you left!
+              </p>
+              <button type="submit" class="btn-grad" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1>Hello...!</h1>
+              <p>Join Us To Know Your Future!</p>
+              <button type="submit" class="btn-grad" id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="../static/js/login.js"></script>
+  <script>
+    function handleButtonClick() {
+      window.location.href = "/";
+    }
+
+    function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const eyeIcon = passwordInput.parentNode.querySelector(".eye-icon i");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+    }
+
+  </script>
+</body>
+
+</html>
